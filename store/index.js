@@ -1,9 +1,9 @@
 export const state = () => ({
     loginModalShow: false
-  })
+})
   
-  export const mutations = {
-    setvariant(state, data) {
+export const mutations = {
+    showModal(state, data) {
       state.loginModalShow = data;
     },
-  }
+}

@@ -48,8 +48,8 @@ export default {
     },
     methods:{
         signinModal(){
-            console.log('modal')
-            this.isCardModalActive = true
+            // console.log('modal')
+            this.$store.commit("showModal", true);
         }
     }
 }

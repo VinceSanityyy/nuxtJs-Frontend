@@ -26,7 +26,7 @@
                         <b-checkbox>Remember me</b-checkbox>
                     </section>
                     <footer class="modal-card-foot">
-                        <button class="button" type="button" @click="isCardModalActive = false">Close</button>
+                        <button class="button" type="button" @click="closeModal">Close</button>
                         <button @click="login" class="button is-primary">Login</button>
                     </footer>
                 </div>
@@ -37,15 +37,23 @@
     export default {
         data() {
             return {
-                isCardModalActive: true,
                 email:'',
                 password:''
             }
         },
+        computed: {
+            isCardModalActive() {
+                return this.$store.state.loginModalShow;
+            },
+        },
         methods:{
+            closeModal(){
+                this.$store.commit("showModal", false);
+            },
             login(){
-                console.log('clicked Login')
+                console.log('login')
             }
         }
+
     }
 </script>
