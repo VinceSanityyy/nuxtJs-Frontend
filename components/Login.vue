@@ -1,5 +1,5 @@
 <template>
-        <b-modal :active.sync="isCardModalActive" :width="500">
+        <b-modal :active.sync="$store.state.loginModalShow" :width="500">
             <div class="modal-card" style="width: auto">
                     <header class="modal-card-head">
                         <p class="modal-card-title">Login</p>
@@ -41,11 +41,11 @@
                 password:''
             }
         },
-        computed: {
-            isCardModalActive() {
-                return this.$store.state.loginModalShow;
-            },
-        },
+        // computed: {
+        //     isCardModalActive() {
+        //         return this.$store.state.loginModalShow;
+        //     },
+        // },
         methods:{
             closeModal(){
                 this.$store.commit("showModal", false);
