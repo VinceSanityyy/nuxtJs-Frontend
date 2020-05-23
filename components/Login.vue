@@ -1,5 +1,5 @@
 <template>
-        <b-modal :active.sync="$store.state.loginModalShow" :width="500">
+        <b-modal :active.sync="isCardModalActive" :width="500">
             <div class="modal-card" style="width: auto">
                     <header class="modal-card-head">
                         <p class="modal-card-title">Login</p>
@@ -34,6 +34,11 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
+Vue.use(Loading);
+
     export default {
         data() {
             return {
@@ -41,17 +46,28 @@
                 password:''
             }
         },
-        // computed: {
-        //     isCardModalActive() {
-        //         return this.$store.state.loginModalShow;
-        //     },
-        // },
+        computed: {
+            isCardModalActive() {
+                return this.$store.state.loginModalShow;
+            },
+        },
         methods:{
             closeModal(){
                 this.$store.commit("showModal", false);
             },
             login(){
-                console.log('login')
+                this.$store.dispatch('login',{
+                    email: this.email,
+                    password: this.password
+                }).then((response)=>{
+                    return response
+                }).catch((err)=>{
+                    console.log(err)
+                }).finally(()=>{
+                    // loader.hide()
+                })
+                this.$store.commit("showModal", false);
+                this.$store.commit('ifAuth',true);
             }
         }
 

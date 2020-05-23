@@ -1,6 +1,6 @@
 <template>
   <div class="column">
-    <div class="card">
+    <div class="card" style="justify-content: center;">
       <header class="card-header">
         <p class="card-header-title has-text-grey">
           {{ title }}

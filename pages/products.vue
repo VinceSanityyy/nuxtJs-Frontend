@@ -1,6 +1,8 @@
 <template>
- <section class="section">
-    <div class="columns is-mobile">
+ <section class="section" >
+   
+    <div class="container" style="display:inline-block;">
+       <div class="columns is-mobile" >
       <card
         title="Free"
         icon="github-circle"
@@ -37,6 +39,7 @@
         No other internal dependency
       </card>
     </div>
+    </div>
   </section>
 </template>
 
@@ -45,14 +48,18 @@ import Card from '~/components/Card'
 export default {
   components: {
     Card
+  },
+  created(){
+    this.$store.dispatch('getTodos')
   }
 }
 </script>
 
 <style>
-.container{
+.section{
   justify-items: center;
   justify-content: center;
   display: flex;
 }
+
 </style>

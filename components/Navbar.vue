@@ -24,17 +24,20 @@
         <template slot="end">
             <b-navbar-item tag="div">
                 <div class="buttons">
-                    <a class="button is-primary">
+                    <a v-show="isAuthenticated == false" class="button is-primary">
                         <strong>Sign up</strong>
                     </a>
-                    <a @click="signinModal" class="button is-light">
+                    <a v-if="isAuthenticated == true" @click="logOut" class="button is-primary">
+                        Log out
+                    </a>
+                    <a v-else @click="signinModal" class="button is-light">
                         Log in
                     </a>
                 </div>
             </b-navbar-item>
-           
         </template>
     </b-navbar>
+    
    
 </template>
 
@@ -43,14 +46,35 @@
 export default {
     data(){
         return{
-            isCardModalActive: false
+            isCardModalActive: false,
+        }
+    },
+    computed:{
+        isAuthenticated(){
+            return this.$store.state.authenticated;
         }
     },
     methods:{
         signinModal(){
-            // console.log('modal')
+            
             this.$store.commit("showModal", true);
-        }
+        },
+        logOut(){
+                this.$buefy.dialog.confirm({
+                message: 'Are you sure you want to log out?',
+                onConfirm: () => [
+                    this.$store.commit('ifAuth',false),
+                    this.$buefy.toast.open('Log out successfully'),
+                    this.$router.push('/')
+                    ]
+            })
+            
+        },
+      
+        
+    },
+    created(){
+        
     }
 }
 </script>
