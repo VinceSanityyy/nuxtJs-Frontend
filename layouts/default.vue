@@ -17,10 +17,10 @@ export default {
     Login,
     Cart
   },
-  data () {
-    return {
-     
+ head(){
+      return{
+        title: 'Nuxt Shop'
+      }
     }
-  }
 }
 </script>
