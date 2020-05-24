@@ -9,7 +9,7 @@
             </b-navbar-item>
         </template>
         <template slot="start">
-            <b-navbar-item href="#">
+            <b-navbar-item >
                  <nuxt-link to="/products">Products</nuxt-link>
             </b-navbar-item>
             <b-navbar-dropdown label="Info">
@@ -24,6 +24,10 @@
         <template slot="end">
             <b-navbar-item tag="div">
                 <div class="buttons">
+                       
+                            <Cart />
+                        
+                    &nbsp;&nbsp;
                     <a v-show="isAuthenticated == false" class="button is-primary">
                         <strong>Sign up</strong>
                     </a>
@@ -37,13 +41,14 @@
             </b-navbar-item>
         </template>
     </b-navbar>
-    
-   
 </template>
 
 <script>
-
+import Cart from '~/components/Cart'
 export default {
+    components:{
+        Cart
+    },
     data(){
         return{
             isCardModalActive: false,
@@ -70,7 +75,7 @@ export default {
             })
             
         },
-      
+    
         
     },
     created(){

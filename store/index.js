@@ -3,7 +3,8 @@
 export const state = () => ({
     loginModalShow: false,
     authenticated: false,
-    todos:[]
+    todos:[],
+    isCollapse: false
 })
   
 export const mutations = {
@@ -15,6 +16,9 @@ export const mutations = {
     },
     setTodos(state,data){
       state.todos = data
+    },
+    setCollapse(state,data){
+      state.isCollapse = data
     }
 }
 
