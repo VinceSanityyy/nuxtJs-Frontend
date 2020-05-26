@@ -28,7 +28,7 @@ export const actions = {
        this.$axios.get('https://jsonplaceholder.typicode.com/todos')
         .then((response)=>{
           resolve(response)
-          // console.log(response.data)
+          console.log(response.data)
           commit('setTodos',response.data)
         }).catch((err)=>{
           reject(err)
